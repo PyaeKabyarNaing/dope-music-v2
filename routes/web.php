@@ -5,28 +5,18 @@ use App\Http\Controllers\SongController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('users.index');
-// })->name('home');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/album', [AlbumController::class, 'index'])->name('album.index');
 
 Route::get('/search', [SongController::class, 'search'])->name('search');
 
-Route::get('/detail', function () {
-    return view('songs.detail');
-})->name('song.detail'); // replace with dynamic route by song_id
-
-Route::get('/playlist', function () {
-    return view('songs.playlist');
-})->name('playlist.edit');
-
-Route::get('/history', function () {
-    return view('songs.history');
-})->name('history.view');
+Route::get('/songs/genre/{genre}', [SongController::class, 'filterByGenre'])
+    ->name('songs.byGenre');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,7 +34,7 @@ Route::get('/billing/cancel', function () {
 })->name('billing.cancel');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [SongController::class, 'index'])->name('home');
+    Route::get('/home', [SongController::class, 'index'])->name('home');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/{id}', [ProfileController::class, 'view'])->name('user.profile');
     Route::patch('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
@@ -76,10 +66,6 @@ Route::get('/song/{id}/comments', [CommentController::class, 'fetch']);
 
 // admin
 
-// Route::get('/admins', function () {
-//     return view('admins.index');
-// })->name('admin');
-
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [UserController::class, 'index'])->name('admins.index');
     Route::post('/admin/{user}/role', [UserController::class, 'updateRoles'])->name('admins.updateRoles');
@@ -91,7 +77,3 @@ require __DIR__.'/auth.php';
 Route::get('/admin/user/create', function () {
     return view('admin.create-user');
 })->middleware(['auth', 'verified', 'can:create user'])->name('user.create');
-
-Route::get('/background', function () {
-    return view('components.background');
-})->name('background');

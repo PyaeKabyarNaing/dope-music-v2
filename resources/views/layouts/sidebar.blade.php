@@ -21,8 +21,7 @@
             </div>
         </a>
 
-        <a href="{{ route('playlist.edit') }}"
-            class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+        <a href="#" class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
             <div>
                 <x-icons.playlist-icon class="r-0" />
             </div>
@@ -31,8 +30,7 @@
             </div>
         </a>
 
-        <a href="{{ route('history.view') }}"
-            class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+        <a href="#" class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
             <div>
                 <x-icons.history-icon class="r-0" />
             </div>

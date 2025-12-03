@@ -1,12 +1,6 @@
 <x-app-layout>
     <!-- listbar -->
     @include('layouts.listbar')
-    @include('layouts.audiobar')
-
-    <!-- Album Name Header -->
-    <h1 class="text-2xl font-bold mb-6">
-        {{ $album->name }}
-    </h1>
 
     <!-- Song Cover Image -->
     <div class="w-full flex justify-center mb-6">
@@ -17,6 +11,14 @@
             <img src="{{ asset('storage/' . $song->cover_image) }}" alt="{{ $song->name }}"
                 class="w-64 h-64 object-cover rounded-xl shadow-lg">
         @endif
+    </div>
+
+    {{-- Song name --}}
+    <div class="flex items-center justify-between mb-6">
+        <p class="text-2xl font-semibold">{{ $album->artist_name }} - </p>
+        @foreach ($songs as $song)
+            <p class="text-2xl font-semibold">{{ $song->name }}</p>
+        @endforeach
     </div>
 
     <!-- Uploader Info + Actions -->

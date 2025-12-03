@@ -141,8 +141,8 @@ class DatabaseSeeder extends Seeder
             'ft_artist_name' => 'noone',
             'cover_image' => 'images/69291652d9060.jpg',
             'audio_file' => 'songs/69253a254aba0.mp3',
-            'album_id' => 1,
             'genre_id' => Genre::where('name', 'Rock')->first()->id,
+            'description' => 'des',
             'user_id' => 4,
         ]);
         Song::create([
@@ -150,8 +150,8 @@ class DatabaseSeeder extends Seeder
             'artist_name' => 'Sia',
             'cover_image' => 'images/69281e28b7a43.jpg',
             'audio_file' => 'songs/69281e28b9412.mp3',
-            'album_id' => 1,
             'genre_id' => Genre::where('name', 'Pop')->first()->id,
+            'description' => 'des',
             'user_id' => 5,
         ]);
 
@@ -160,8 +160,8 @@ class DatabaseSeeder extends Seeder
             'artist_name' => 'Billie Eilish',
             'cover_image' => 'images/69281d71221c1.jpg',
             'audio_file' => 'songs/69281d7123dec.mp3',
-            'album_id' => 1,
             'genre_id' => Genre::where('name', 'Pop')->first()->id,
+            'description' => 'des',
             'user_id' => 6,
         ]);
 
@@ -170,8 +170,8 @@ class DatabaseSeeder extends Seeder
             'artist_name' => 'Kendrick Lamar',
             'cover_image' => 'images/Maad_City.jpeg',
             'audio_file' => 'songs/69294882d9704.mp3',
-            'album_id' => 1,
-            'genre_id' => Genre::where('name', 'Pop')->first()->id,
+            'genre_id' => Genre::where('name', 'Hip Hop')->first()->id,
+            'description' => 'des',
             'user_id' => 8,
         ]);
 

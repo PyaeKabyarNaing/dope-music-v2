@@ -1,5 +1,6 @@
 <x-app-layout>
 
+    {{-- Success message --}}
     @if (session()->has('success'))
         <div id="flash-message" class="w-full bg-green-300 text-black text-center p-4 mb-4 rounded-md">
             {{ session('success') }}
@@ -94,20 +95,6 @@
             </div>
 
             <!-- Album -->
-            {{-- <div>
-                <x-input-label for="album_id" :value="__('Album (Optional)')" />
-                <select id="album_id" name="album_id"
-                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white">
-                    <option value="">No album</option>
-
-                    @foreach ($albums as $album)
-                        <option value="{{ $album->id }}" {{ old('album_id') == $album->id ? 'selected' : '' }}>
-                            {{ $album->name }}
-                        </option>
-                    @endforeach
-                </select>
-                <x-input-error :messages="$errors->get('album_id')" class="mt-2" />
-            </div> --}}
             <div>
                 <x-input-label for="album_ids" :value="__('Albums (Optional)')" />
                 <select id="album_ids" name="album_ids[]" multiple
@@ -124,6 +111,12 @@
                 <x-input-error :messages="$errors->get('album_ids')" class="mt-2" />
             </div>
 
+            <!-- Desc -->
+            <div>
+                <x-input-label for="description" :value="__('Description')" />
+                <x-text-input id="description" name="description" type="text" class="mt-1 block w-full"
+                    value="{{ old('description') }}" />
+            </div>
 
             <!-- Submit -->
             <div class="flex items-center gap-4">

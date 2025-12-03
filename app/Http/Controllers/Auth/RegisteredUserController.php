@@ -33,6 +33,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             "cover_image" => "nullable|image|mimes:jpeg,png,jpg|max:2048",
+            'bio' => ['nullable', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -49,6 +50,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'cover_image' => isset($coverName) ? ('images/' . $coverName) : null,
+            'bio' => isset($request->bio) ? : null,
             'password' => Hash::make($request->password),
         ]);
 

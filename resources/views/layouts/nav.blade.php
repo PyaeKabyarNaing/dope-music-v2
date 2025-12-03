@@ -1,6 +1,6 @@
 <!-- resources/views/layouts/nav.blade.php -->
 <!-- whole nav -->
-<nav class="top-0 fixed dark:bg-black bg-white w-full z-30">
+<nav class="top-0 fixed dark:bg-black bg-white w-full h-[70px] z-30">
     <div class="flex justify-between items-center pt-2 pl-7 pb-1 pr-7">
         {{-- logo --}}
         <div class="flex justify-around items-center flex-none">
@@ -48,24 +48,26 @@
                 {{-- @endif --}}
             @endrole
 
-            {{-- <a href="#" class="mx-2">
+            <a href="#" class="mx-2">
                 <x-icons.setting-icon />
-            </a> --}}
-
-            <a href="{{ route('user.profile', auth()->user()->id) }}">
-
-                @if (auth()->user()->image)
-                    <div class="w-[35px] h-[35px] rounded-full overflow-hidden">
-                        <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="profile"
-                            class="rounded-full w-[35px] h-auto object-scale-down" alt="profile" />
-                    </div>
-                @else
-                    <div
-                        class="w-[35px] h-[35px] bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
-                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                    </div>
-                @endif
             </a>
+
+            @auth
+                <a href="{{ route('user.profile', auth()->user()->id) }}">
+
+                    @if (auth()->user()->image)
+                        <div class="w-[35px] h-[35px] rounded-full overflow-hidden">
+                            <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="profile"
+                                class="rounded-full w-[35px] h-auto object-scale-down" alt="profile" />
+                        </div>
+                    @else
+                        <div
+                            class="w-[35px] h-[35px] bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                        </div>
+                    @endif
+                </a>
+            @endauth
         </div>
     </div>
 </nav>

@@ -1,8 +1,8 @@
 <!-- whole listbar -->
 <div
-    class="fixed dark:bg-black bg-white inset-y-0 right-0 w-[30%] h-full pr-2 flex-col gap-2 hidden sm:block transform transition-transform duration-300 ease-in-out z-10 pl-1 border-l-4 border-gray-500">
+    class="fixed dark:bg-black bg-white inset-y-0 right-0 w-[30%] h-full pr-2 flex-col gap-2 hidden sm:block transform transition-transform duration-300 ease-in-out z-10 pl-1 border-l-4 border-gray-500 overflow-y-auto">
 
-    <div class="h-[10%]"></div>
+    <div class="h-[70px]"></div>
 
     <!-- Loop through songs -->
     @foreach ($songs as $index => $song)

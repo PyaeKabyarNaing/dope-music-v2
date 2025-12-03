@@ -1,5 +1,6 @@
 <x-app-layout>
 
+    {{-- Success message --}}
     @if (session()->has('success'))
         <div id="flash-message" class="w-full bg-green-300 text-black text-center p-4 mb-4 rounded-md">
             {{ session('success') }}
@@ -94,6 +95,13 @@
                         </option>
                     @endforeach
                 </select>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <x-input-label for="description" :value="__('Description')" />
+                <x-text-input id="description" name="description" type="text" class="mt-1 block w-full"
+                    value="{{ old('description', $song->description) }}" required />
             </div>
 
             <!-- Submit -->

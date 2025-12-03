@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Cashier\Billable;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles, Billable;
+    use HasFactory, Notifiable, HasRoles, Billable, Searchable;
 
     // Users I follow
     public function following()
@@ -33,6 +34,14 @@ class User extends Authenticatable
         return $this->hasMany(Album::class);
     }
 
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'bio' => $this->bio,
+            'created_at' => $this->created_at->timestamp,
+        ];
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -43,6 +52,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'bio',
     ];
 
     /**

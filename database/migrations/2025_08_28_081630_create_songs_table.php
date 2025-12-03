@@ -21,9 +21,7 @@ return new class extends Migration
             $table->foreignId('genre_id')->nullable()
             ->constrained('genres')
             ->onDelete('cascade');
-            $table->foreignId('album_id')->nullable()
-            ->constrained('albums')
-            ->onDelete('cascade');
+            $table->string('description')->nullable();
             $table->foreignId('user_id')
             ->constrained('users')
             ->onDelete('cascade');

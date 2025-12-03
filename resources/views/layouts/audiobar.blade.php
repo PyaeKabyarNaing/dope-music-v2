@@ -1,7 +1,7 @@
 <div
-    class="fixed bottom-0 left-0 right-0 h-[10%] dark:bg-black bg-white flex justify-between items-center px-4 z-50 border-t border-gray-300 dark:border-gray-700">
+    class="fixed bottom-0 inset-x-0 w-full h-[70px] dark:bg-black bg-white flex justify-between items-center px-4 z-50 border-t border-gray-300 dark:border-gray-700">
     <!-- Left: Song Info -->
-    <div class="md:flex items-center gap-4 min-w-0 flex-1">
+    <div class="flex items-center justify-center gap-4 min-w-0 flex-1">
         <img id="audio-cover" class="w-12 h-12 object-cover rounded" src="{{ asset('images/default-cover.jpg') }}"
             alt="Song cover">
         <div class="min-w-0 flex-1">
@@ -48,16 +48,16 @@
     </div>
 
     <!-- Right: Volume & Additional Controls -->
-    <div class="hidden lg:flex items-center gap-4 flex-1 justify-end">
+    <div class="items-center gap-4 flex-2 justify-end">
 
         <!-- Volume -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
             <button class="text-gray-600 dark:text-gray-400 hover:text-purple-600 transition" id="volume-btn">
-                <x-icons.volumn-high-icon class="w-5 h-5" id="volume-high-icon" />
+                <x-icons.volumn-high-icon id="volume-high-icon" />
                 <x-icons.volumn-low-icon id="volume-low-icon" />
                 <x-icons.volumn-mute-icon id="volume-mute-icon" />
             </button>
-            <div class="w-20 relative group cursor-pointer" id="volume-container">
+            <div class="w-[90px] relative group cursor-pointer" id="volume-container">
                 <div class="w-full h-1 bg-gray-300 dark:bg-gray-600 rounded-full">
                     <div class="h-1 bg-purple-600 rounded-full" id="volume-bar" style="width: 70%"></div>
                 </div>

@@ -1,18 +1,17 @@
 <x-app-layout>
-    @include('layouts.audiobar')
-    <!-- Song Name Header -->
-    <h1 class="text-2xl font-bold mb-6">
-        {{ $song->name }}
-    </h1>
 
     <!-- Song Cover Image -->
     <div class="w-full flex justify-center mb-6">
         @if ($song->cover_image)
             <img src="{{ asset('storage/' . $song->cover_image) }}" alt="{{ $song->name }}"
-                class="w-64 h-64 object-cover rounded-xl shadow-lg">
+                class="w-[500px] h-[500px] object-cover rounded-xl shadow-lg">
         @else
-            <div class="w-64 h-64 object-cover rounded-xl shadow-lg bg-slate-400"></div>
+            <div class="w-[500px] h-[500px] object-cover rounded-xl shadow-lg bg-slate-400"></div>
         @endif
+    </div>
+    {{-- Song name --}}
+    <div class="flex items-center justify-between mb-6">
+        <p class="text-2xl font-semibold">{{ $song->artist_name }} - {{ $song->name }}</p>
     </div>
 
     <!-- Uploader Info + Actions -->
@@ -35,8 +34,13 @@
                 <p class="text-lg font-semibold">{{ $user->name }}</p>
                 <p class="text-sm text-gray-500">100 K subscribers</p>
             </div>
-        </div>
 
+            <a href="#" class="hover:text-blue-500 transition">
+                <x-primary-button>
+                    Subscribe
+                </x-primary-button>
+            </a>
+        </div>
         <!-- Right: Buttons - React, Share, Download -->
         <div class="flex items-center gap-4 text-xl">
 

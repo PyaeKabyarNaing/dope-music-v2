@@ -36,9 +36,5 @@ class CommentController extends Controller
         $comment->save();
 
         return back()->with('success', 'Comment added!');
-    //     return response()->json([
-    //     'success' => true,
-    //     'comment' => $comment->load('user')
-    // ]);
     }
 }

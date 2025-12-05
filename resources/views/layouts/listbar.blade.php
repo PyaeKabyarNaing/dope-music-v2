@@ -6,7 +6,8 @@
 
     <!-- Loop through songs -->
     @foreach ($songs as $index => $song)
-        <div class="flex items-center gap-3 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded cursor-pointer song-item"
+        <div class="flex items-center gap-3 p-2 rounded cursor-pointer song-item transition
+    hover:bg-gray-100 dark:hover:bg-gray-800"
             data-index="{{ $index }}">
 
             <!-- Song Cover -->
@@ -35,8 +36,20 @@
     document.addEventListener("DOMContentLoaded", () => {
         const songItems = document.querySelectorAll(".song-item");
 
+        if (songItems.length > 0) {
+            songItems[0].classList.add("bg-gray-200", "dark:bg-gray-700");
+        }
+
+
         songItems.forEach(item => {
             item.addEventListener("click", () => {
+                songItems.forEach(i => {
+                    i.classList.remove("bg-gray-200", "dark:bg-gray-700");
+                });
+
+                // Add active to clicked one
+                item.classList.add("bg-gray-200", "dark:bg-gray-700");
+
                 const index = parseInt(item.dataset.index);
                 player.playSongAt(index);
             });

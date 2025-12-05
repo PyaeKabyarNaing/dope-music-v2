@@ -12,7 +12,8 @@
     <div class="h-[20%] flex flex-col">
 
         <!-- Sidebar Links -->
-        <a href="{{ route('home') }}" class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+        <a href="{{ route('home') }}"
+            class="flex items-center py-2 gap-3 cursor-pointer transition {{ request()->routeIs('home') ? 'bg-gray-400 dark:bg-gray-700 active' : 'hover:bg-gray-400 dark:hover:bg-gray-700' }}">
             <div>
                 <x-icons.home-icon class="r-0" />
             </div>
@@ -21,16 +22,28 @@
             </div>
         </a>
 
-        <a href="#" class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+        <a href="{{ route('playlist.show') }}"
+            class="flex items-center py-2 gap-3 cursor-pointer transition {{ request()->routeIs('playlist.show') ? 'bg-gray-400 dark:bg-gray-700 active' : 'hover:bg-gray-400 dark:hover:bg-gray-700' }}">
             <div>
                 <x-icons.playlist-icon class="r-0" />
             </div>
             <div>
-                <span class="text-sm font-medium l-0">Playlists</span>
+                <span class="text-sm font-medium l-0">My Playlists</span>
             </div>
         </a>
 
-        <a href="#" class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+        <a href="{{ route('playlist.create') }}"
+            class="flex items-center py-2 gap-3 cursor-pointer transition {{ request()->routeIs('playlist.create') ? 'bg-gray-400 dark:bg-gray-700 active' : 'hover:bg-gray-400 dark:hover:bg-gray-700' }}">
+            <div>
+                <x-icons.playlist-icon class="r-0" />
+            </div>
+            <div>
+                <span class="text-sm font-medium l-0">Create A Playlist</span>
+            </div>
+        </a>
+
+        <a href="#"
+            class="flex items-center py-2 gap-3 cursor-pointer transition {{ request()->routeIs('songHistory') ? 'bg-gray-400 dark:bg-gray-700 active' : 'hover:bg-gray-400 dark:hover:bg-gray-700' }}">
             <div>
                 <x-icons.history-icon class="r-0" />
             </div>
@@ -41,7 +54,7 @@
 
         @role('artist')
             <a href="{{ route('album.create') }}"
-                class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+                class="flex items-center py-2 gap-3 cursor-pointer transition {{ request()->routeIs('album.create') ? 'bg-gray-400 dark:bg-gray-700 active' : 'hover:bg-gray-400 dark:hover:bg-gray-700' }}">
                 <div>
                     <x-icons.album-icon class="r-0" />
                 </div>
@@ -51,7 +64,7 @@
             </a>
 
             <a href="{{ route('song.create') }}"
-                class="flex items-center py-2 gap-3 cursor-pointer hover:bg-gray-700 transition">
+                class="flex items-center py-2 gap-3 cursor-pointer transition {{ request()->routeIs('song.create') ? 'bg-gray-400 dark:bg-gray-700 active' : 'hover:bg-gray-400 dark:hover:bg-gray-700' }}">
                 <div>
                     <x-icons.music-icon class="r-0" />
                 </div>

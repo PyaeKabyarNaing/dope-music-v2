@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Genre;
 use App\Models\Song;
 use App\Models\Album;
+use App\Models\Playlist;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -189,6 +190,46 @@ class DatabaseSeeder extends Seeder
         $albums->each(function ($album) use ($songs) {
             $randomSongs = $songs->random(rand(1, 54))->pluck('id');
             $album->songs()->attach($randomSongs);
+        });
+
+        Playlist::create([
+            'name' => 'Relaxing Music',
+            'description' => 'des',
+            'user_id' => 3,
+        ]);
+        Playlist::create([
+            'name' => 'Work Out Music',
+            'description' => 'des',
+            'user_id' => 3,
+        ]);
+        Playlist::create([
+            'name' => 'Energetic Music',
+            'description' => 'des',
+            'user_id' => 3,
+        ]);
+        Playlist::create([
+            'name' => 'Favorite OSTs',
+            'description' => 'des',
+            'user_id' => 3,
+        ]);
+        Playlist::create([
+            'name' => 'Instrumental',
+            'description' => 'des',
+            'user_id' => 3,
+        ]);
+
+        $playlist1 = Playlist::find(1);
+        $playlist1->songs()->attach([1, 2, 3, 4]);
+
+        $playlist2 = Playlist::find(2);
+        $playlist2->songs()->attach([1, 2]);
+
+        $playlists = Playlist::where('id', '>', 0)->get();
+        $songs = Song::all();
+
+        $playlists->each(function ($playlist) use ($songs) {
+            $randomSongs = $songs->random(rand(1, 54))->pluck('id');
+            $playlist->songs()->attach($randomSongs);
         });
 
     }

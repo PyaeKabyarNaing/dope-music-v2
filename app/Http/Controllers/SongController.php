@@ -16,7 +16,6 @@ class SongController extends Controller
 {
     public function show(Song $song)
     {
-        // $song = Song::with('user', 'comments.user')->findOrFail($song->id);
         $song->load('user', 'comments.user');
 
         return view('songs.detail', [
@@ -60,54 +59,11 @@ class SongController extends Controller
         return view('users.search', compact('songs', 'albums', 'users', 'search'));
     }
 
-    // public function search(Request $request)
-    // {
-    // $request->validate([
-    //     'search' => 'nullable|string|max:255',
-    // ]);
-    
-    // $searchTerm = $request->input('search', '');
-    
-    // // Only search if term is provided
-    // if (empty($searchTerm)) {
-    //     return view('users.search', [
-    //         'searchTerm' => '',
-    //         'searchSongs' => collect(),
-    //         'searchAlbums' => collect(),
-    //         'searchUsers' => collect(),
-    //     ]);
-    // }
-    
-    // try {
-    //     $searchSongs = Song::search($searchTerm)->get();
-    //     $searchAlbums = Album::search($searchTerm)->get();
-    //     $searchUsers = User::search($searchTerm)->get();
-        
-    //     return view('users.search', compact(
-    //         'searchTerm', 
-    //         'searchSongs', 
-    //         'searchAlbums', 
-    //         'searchUsers'
-    //     ));
-    // } catch (\Exception $e) {
-    //     // Log error and return empty results
-    //     Log::error('Search failed: ' . $e->getMessage());
-        
-    //     return view('users.search', [
-    //         'searchTerm' => $searchTerm,
-    //         'searchSongs' => collect(),
-    //         'searchAlbums' => collect(),
-    //         'searchUsers' => collect(),
-    //         'error' => 'Search is temporarily unavailable',
-    //     ]);
-    // }
-    // }
-
     public function filterByGenre(Genre $genre)
     {
         $songs = Song::where('genre_id', $genre->id)->get();
         $genres = Genre::all();
-        $albums = Album::all();
+        $albums = Album::all(); // change later for album contains song iwth selected genre
         $artists = User::role('artist')->get();
 
         return view('users.index', compact('songs', 'genres', 'albums', 'artists'));

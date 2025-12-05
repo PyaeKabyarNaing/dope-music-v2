@@ -12,17 +12,30 @@ use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
-    public function show(Album $album)
-    {
-        $album = Album::with('songs', 'user', 'songs.comments.user')->findOrFail($album->id);
-        $allSongs = Song::all();
+    // public function detail(Album $album, Song $song)
+    // {
+    //     $album->load('songs', 'songs.user', 'songs.comments.user');
 
-        return view('albums.show', [
+    //     return view('albums.detail', [
+    //     'album' => $album,
+    //     'songs' => $album->songs,
+    // ]);
+
+    // $songs = $album->songs;
+
+    // return view('albums.detail', compact('album', 'songs', 'song'));
+    // }
+
+    public function detail(Album $album)
+    {
+        $album->load('songs', 'songs.user', 'songs.comments.user');
+
+        return view('albums.detail', [
         'album' => $album,
         'songs' => $album->songs,
-        'user' => $album->user,
-        'allSongs' => $allSongs,
     ]);
+
+    return view('albums.detail', compact('album', 'songs'));
     }
 
     // Show create album form

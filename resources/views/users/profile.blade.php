@@ -58,7 +58,7 @@
     <div id="tab-contents" class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <!-- Songs Tab -->
-        <div class="tab-content" id="songs">
+        <div class="tab-content mb-[25px]" id="songs">
             <h1 class="text-2xl font-bold mb-4">{{ $artist->name }}'s Songs</h1>
             @foreach ($songs as $index => $song)
                 <a href="{{ route('song.show', $song) }}">
@@ -87,7 +87,7 @@
         <div class="tab-content hidden" id="albums">
             <h1 class="text-2xl font-bold mb-4">{{ $artist->name }}'s Albums</h1>
             @foreach ($albums as $album)
-                <a href="{{ route('album.show', $album) }}"
+                <a href="{{ route('album.detail', $album) }}"
                     class="min-w-[160px] cursor-pointer hover:bg-[#ffffff26] dark:bg-gray-800/10 bg-gray-500/10 m-2 mx-2">
                     <img class="w-[160px] h-[160px] overflow-hidden bg-red-400 flex justify-center items-center font-bold text-xl rounded-xl object-cover"
                         src="{{ asset('storage/' . $album->cover_image) }}" alt="">

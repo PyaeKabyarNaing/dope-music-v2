@@ -48,7 +48,7 @@
                 {{-- @endif --}}
             @endrole
 
-            <a href="#" class="mx-2">
+            <a href="{{ route('setting.mode') }}" class="mx-2">
                 <x-icons.setting-icon />
             </a>
 

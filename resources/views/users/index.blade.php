@@ -58,13 +58,9 @@
 
             <!-- each album -->
             @foreach ($albums as $album)
-                <a href="{{ route('album.show', $album) }}">
+                <a href="{{ route('album.detail', $album) }}">
                     <div
                         class="min-w-[160px] cursor-pointer hover:bg-[#ffffff26] dark:bg-gray-800/10 bg-gray-500/10 m-2 mx-2">
-                        {{-- <div
-                            class="w-[160px] h-[160px] overflow-hidden bg-red-400 flex justify-center items-center font-bold text-xl rounded-xl">
-                            Top 50 Hits
-                        </div> --}}
                         <img class="w-[160px] h-[160px] overflow-hidden bg-red-400 flex justify-center items-center font-bold text-xl rounded-xl object-cover"
                             src="{{ asset('storage/' . $album->cover_image) }}" alt="">
                         <p class="font-bold mt-2 mb-1 truncate">{{ $album->name }}</p>

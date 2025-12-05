@@ -14,11 +14,10 @@
     </div>
 
     {{-- Song name --}}
-    <div class="flex items-center justify-between mb-6">
-        <p class="text-2xl font-semibold">{{ $album->artist_name }} - </p>
-        @foreach ($songs as $song)
-            <p class="text-2xl font-semibold">{{ $song->name }}</p>
-        @endforeach
+    <div class="flex items-center justify-start mb-6">
+        <p id="display-artist" class="text-xl font-semibold"></p>
+        <p class="text-2xl mx-1">-</p>
+        <p id="display-title" class="text-xl font-semibold"></p>
     </div>
 
     <!-- Uploader Info + Actions -->
@@ -27,18 +26,18 @@
         <!-- Left: Uploader avatar + name + subscribers -->
         <div class="flex items-center gap-3">
             <!-- Avatar -->
-            @if ($user->image)
-                <img src="{{ asset('storage/' . $user->image) }}" class="w-12 h-12 rounded-full object-cover" />
+            @if ($album->user->image)
+                <img src="{{ asset('storage/' . $album->user->image) }}" class="w-12 h-12 rounded-full object-cover" />
             @else
                 <div
                     class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
-                    {{ strtoupper(substr($user->name, 0, 1)) }}
+                    {{ strtoupper(substr($album->user->name, 0, 1)) }}
                 </div>
             @endif
 
             <!-- Name and subscriptions -->
             <div>
-                <p class="text-lg font-semibold">{{ $user->name }}</p>
+                <p class="text-lg font-semibold">{{ $album->user->name }}</p>
                 <p class="text-sm text-gray-500">100 K subscribers</p>
             </div>
         </div>
@@ -190,6 +189,5 @@
                 .catch(err => console.log(err));
         });
     </script>
-
 
 </x-app-layout>

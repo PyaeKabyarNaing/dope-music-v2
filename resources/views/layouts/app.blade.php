@@ -16,10 +16,18 @@
         rel="stylesheet">
 
     <!-- Scripts -->
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased dark:bg-dark dark:text-white bg-white text-black">
+<body class="font-sans antialiased dark:bg-dark dark:text-white bg-gray-100 text-black transition-all duration-500">
     <!-- whole page -->
     <div class="min-h-screen">
 
@@ -27,7 +35,12 @@
         @include('layouts.nav')
 
         <!-- sidebar -->
-        @include('layouts.sidebar')
+        @if (Route::is('setting.*'))
+            @include('layouts.settingSidebar')
+        @else
+            @include('layouts.sidebar')
+        @endif
+
 
         <!-- Page Heading -->
         @isset($header)
@@ -41,7 +54,7 @@
         <!-- Page Content -->
         <main
             class="lg:ml-[250px] ml-5 mt-[85px] mb-[85px] 
-        @if (Route::is('album.show')) sm:mr-[30%] @endif">
+        @if (Route::is('album.detail')) sm:mr-[30%] @endif">
             {{ $slot }}
         </main>
 
@@ -50,6 +63,25 @@
     </div>
 
     <script src="{{ asset('js/player.js') }}"></script>
+
+    {{-- mode theme --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            toggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

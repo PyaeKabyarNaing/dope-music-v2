@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-volume-up"
-    viewBox="0 0 16 16">
+<svg id="volume-high-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+    class="bi bi-volume-up" viewBox="0 0 16 16">
     <path
         d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z" />
     <path

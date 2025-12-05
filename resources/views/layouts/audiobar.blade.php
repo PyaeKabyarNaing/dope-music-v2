@@ -23,8 +23,8 @@
             <!-- Play/Pause -->
             <button class="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 transition"
                 id="play-pause-btn">
-                <x-icons.play-icon class="w-5 h-5" id="play-icon" />
-                <x-icons.pause-icon class="w-5 h-5" id="pause-icon" />
+                <x-icons.play-icon class="w-5 h-5" />
+                <x-icons.pause-icon class="w-5 h-5" />
             </button>
 
             <!-- Next -->
@@ -53,9 +53,9 @@
         <!-- Volume -->
         <div class="flex items-center gap-1">
             <button class="text-gray-600 dark:text-gray-400 hover:text-purple-600 transition" id="volume-btn">
-                <x-icons.volumn-high-icon id="volume-high-icon" />
-                <x-icons.volumn-low-icon id="volume-low-icon" />
-                <x-icons.volumn-mute-icon id="volume-mute-icon" />
+                <x-icons.volumn-high-icon />
+                <x-icons.volumn-low-icon />
+                <x-icons.volumn-mute-icon />
             </button>
             <div class="w-[90px] relative group cursor-pointer" id="volume-container">
                 <div class="w-full h-1 bg-gray-300 dark:bg-gray-600 rounded-full">

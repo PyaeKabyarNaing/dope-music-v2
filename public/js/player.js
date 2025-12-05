@@ -2,6 +2,8 @@ const audioElement = document.getElementById("audio-player");
 const audioCover = document.getElementById("audio-cover");
 const audioTitle = document.getElementById("audio-title");
 const audioArtist = document.getElementById("audio-artist");
+const displayTitle = document.getElementById("display-title");
+const displayArtist = document.getElementById("display-artist");
 
 const player = {
     audio: audioElement,
@@ -32,6 +34,8 @@ const player = {
         
         audioTitle.textContent = song.name;
         audioArtist.textContent = song.artist_name;
+        displayTitle.textContent = song.name;
+        displayArtist.textContent = song.artist_name;
 
         // Play audio - make sure file_url exists in your songs
         if (song.audio_file) {

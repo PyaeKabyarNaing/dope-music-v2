@@ -11,7 +11,9 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+// Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
+Route::get('/', [SongController::class, 'index'])->name('home');
 
 Route::get('/album', [AlbumController::class, 'index'])->name('album.index');
 
@@ -36,7 +38,6 @@ Route::get('/billing/cancel', function () {
 })->name('billing.cancel');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [SongController::class, 'index'])->name('home');
 
     //profile
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -92,8 +93,3 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// example spatie use in web.php
-// Route::get('/admin/user/create', function () {
-//     return view('admin.create-user');
-// })->middleware(['auth', 'verified', 'can:create user'])->name('user.create');

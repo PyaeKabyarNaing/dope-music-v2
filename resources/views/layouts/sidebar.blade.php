@@ -74,17 +74,29 @@
             </a>
         @endrole
 
-        <form method="POST" action="{{ route('logout') }}" class="hover:bg-red-300">
-            @csrf
-            <button type="submit" class="flex items-center py-2 gap-3 cursor-pointer text-red-500">
+        @auth
+            <form method="POST" action="{{ route('logout') }}" class="hover:bg-red-300">
+                @csrf
+                <button type="submit" class="flex items-center py-2 gap-3 cursor-pointer text-red-500">
+                    <div>
+                        <x-icons.logout-icon class="r-0" />
+                    </div>
+                    <div>
+                        <span class="text-base font-bold l-0">Logout</span>
+                    </div>
+                </button>
+            </form>
+        @endauth
+        @guest
+            <a href="{{ route('login') }}" class="flex items-center py-2 gap-3 cursor-pointer text-green-500">
                 <div>
-                    <x-icons.logout-icon class="r-0" />
+                    <x-icons.login-icon class="r-0" />
                 </div>
                 <div>
-                    <span class="text-base font-bold l-0">Logout</span>
+                    <span class="text-base font-bold l-0">Login</span>
                 </div>
-            </button>
-        </form>
+            </a>
+        @endguest
     </div>
 </div>
 

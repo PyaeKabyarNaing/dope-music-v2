@@ -39,7 +39,7 @@ class User extends Authenticatable
         return [
             'name' => $this->name,
             'bio' => $this->bio,
-            'created_at' => $this->created_at->timestamp,
+            'created_at' => $this->created_at,
         ];
     }
 

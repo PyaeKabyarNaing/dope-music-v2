@@ -31,20 +31,20 @@
         </div>
     </div>
 
-    <div class="flex">
-        @if (auth()->user()->name)
-            <div class="w-[40px] h-[40px] rounded-full overflow-hidden">
-                <img class="rounded-full w-[40px] h-auto object-scale-down"
-                    src="{{ asset('storage/' . auth()->user()->image) }}" alt="profile">
-            </div>
-        @else
-            <div
-                class="w-[45px] h-[45px] bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
-                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-            </div>
-        @endif
+    @auth
+        <div class="flex">
+            @if (auth()->user()->name)
+                <div class="w-[40px] h-[40px] rounded-full overflow-hidden">
+                    <img class="rounded-full w-[40px] h-auto object-scale-down"
+                        src="{{ asset('storage/' . auth()->user()->image) }}" alt="profile">
+                </div>
+            @else
+                <div
+                    class="w-[45px] h-[45px] bg-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                </div>
+            @endif
 
-        @auth
             <h1 class="font-bold text-2xl mt-[1%] ml-2 mb-1">Welcome Back {{ auth()->user()->name }}</h1>
         </div>
     @endauth
@@ -63,8 +63,9 @@
                         class="min-w-[160px] cursor-pointer hover:bg-[#ffffff26] dark:bg-gray-800/10 bg-gray-500/10 m-2 mx-2">
                         <img class="w-[160px] h-[160px] overflow-hidden bg-red-400 flex justify-center items-center font-bold text-xl rounded-xl object-cover"
                             src="{{ asset('storage/' . $album->cover_image) }}" alt="">
-                        <p class="font-bold mt-2 mb-1 truncate">{{ $album->name }}</p>
-                        <p class="text-sm truncate">{{ $album->user->name ?? 'Unknown Artist' }}</p>
+                        <p class="font-bold mt-2 mb-1 truncate max-w-[160px]">{{ $album->name }}
+                        </p>
+                        <p class="text-sm truncate max-w-[160px]">{{ $album->user->name ?? 'Unknown Artist' }}</p>
                     </div>
                 </a>
             @endforeach
@@ -90,8 +91,9 @@
                         </div> --}}
                         <img class="w-[160px] h-[160px] overflow-hidden bg-red-400 flex justify-center items-center font-bold text-xl rounded-xl object-cover"
                             src="{{ asset('storage/' . $song->cover_image) }}" alt="">
-                        <p class="font-bold mt-2 mb-1 ">{{ $song->user->name }} - {{ $song->name }}</p>
-                        <p class="text-sm ">{{ $song->user->name ?? 'Unknown Artist' }}</p>
+                        <p class="font-bold mt-2 mb-1 truncate max-w-[160px]">{{ $song->user->name }} -
+                            {{ $song->name }}</p>
+                        <p class="text-sm truncate max-w-[160px]">{{ $song->user->name ?? 'Unknown Artist' }}</p>
                     </div>
                 </a>
             @endforeach
